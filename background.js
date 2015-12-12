@@ -1,8 +1,13 @@
-alert("Thanks for trying out the 4chan image archiver!\n\n"
-	+ "To use it, navigate to a thread on 4chan.org and click the rectangle icon in the toolbar.\n\n"
-	+ "Soon, either a new tab will open or an alert dialog like this one will tell you if something went wrong.\n\n"
-	+ "In a future version, the user interface will suck a lot less. Progress bars, album history - the sky\'s the limit.\n\n"
-	+ "Happy /b/rowsing!");
+var EXTENSION_VERSION = 0.2;
+var FIRSTRUN_FLAG_KEY = "firstrun_" + EXTENSION_VERSION;
+if (null == localStorage.getItem(FIRSTRUN_FLAG_KEY)) {
+  localStorage.setItem(FIRSTRUN_FLAG_KEY, true);
+  alert("Thanks for trying out the 4chan image archiver!\n\n"
+    + "To use it, navigate to a thread on 4chan.org and click the rectangle icon in the toolbar.\n\n"
+    + "Soon, either a new tab will open or an alert dialog like this one will tell you if something went wrong.\n\n"
+    + "In a future version, the user interface will suck a lot less. Progress bars, album history - the sky\'s the limit.\n\n"
+    + "Happy /b/rowsing! [V" + EXTENSION_VERSION + "]");
+}
 
 var CLIENT_ID = '9c23ab96912dc40';
 
