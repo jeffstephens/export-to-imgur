@@ -8,6 +8,10 @@ var updateProgressInterval = null;
 setInterval(refreshUI, 500);
 setInterval(checkInProgress, 1000);
 
+if (typeof background === "undefined") {
+	messageManager.addMessage("error", "Bummer.", "Something is messed up. Try enabling/disabling the extension...");
+}
+
 // check if an album export is in progress. if so, monitor it.
 function checkInProgress() {
 	if (progressManager.isInProgress()) {
