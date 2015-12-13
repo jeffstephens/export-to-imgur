@@ -1,0 +1,9 @@
+{{#if conversionInProgress}}
+<div class="in-progress-container">
+	<h2>Export In Progress <span class="fixed-width">{{percentComplete}}%</span></h2>
+	<div class="progress-bar-container">
+		<div class="progress-bar progress-bar-background"></div>
+		<div class="progress-bar progress-bar-foreground" style="width: {{percentComplete}}%"></div>
+	</div>
+</div>
+{{/if}}

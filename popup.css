@@ -1,0 +1,70 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,600|Inconsolata);
+html,
+body {
+  width: 350px;
+  height: auto;
+  margin: 0;
+}
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 100%;
+}
+body h2 {
+  text-transform: uppercase;
+  font-size: 0.9em;
+  font-weight: 300;
+  color: #888888;
+  margin: 0 10px 5px;
+}
+.in-progress-container {
+  margin: 10px 0;
+}
+.fixed-width {
+  font-family: 'Inconsolata', monospace;
+  padding: 0 5px;
+}
+.message {
+  width: 100%;
+  text-align: left;
+  padding: 10px 10px;
+  background-color: #eeeeee;
+  background-repeat: no-repeat;
+  background-position: -6px center;
+  background-size: 54px;
+  box-sizing: border-box;
+}
+.message p {
+  margin: 0;
+  margin-left: 40px;
+  font-size: 0.85em;
+  cursor: default;
+  color: #444444;
+  line-height: 1.3em;
+}
+.message-success {
+  background-image: url('icons/check.png');
+}
+.message-info {
+  background-image: url('icons/i.png');
+}
+.message-warning {
+  background-image: url('icons/alert.png');
+}
+.message-error {
+  background-image: url('icons/x.png');
+}
+.progress-bar-container {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.progress-bar {
+  height: 8px;
+}
+.progress-bar-background {
+  background-color: #eeeeee;
+}
+.progress-bar-foreground {
+  position: relative;
+  top: -8px;
+  background-color: #444444;
+}

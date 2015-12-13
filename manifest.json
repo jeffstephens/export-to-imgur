@@ -1,27 +1,28 @@
 {
-  "manifest_version": 2,
+	"manifest_version": 2,
 
-  "name": "4chan image archiver",
-  "description": "This extension creates an imgur album with every image from a 4chan thread.",
-  "version": "0.2",
+	"name": "4chan image archiver",
+	"description": "This extension creates an imgur album with every image from a 4chan thread.",
+	"version": "0.2",
 
-  "browser_action": {
-    "default_icon": "icon.png",
-    "default_title" : "create imgur album with thread images"
-  },
-  "content_scripts": [
-  {
-    "matches": ["https://*.4chan.org/*"],
-    "js": ["scrape.js"]
-  }
-  ],
-  "background": {
-    "scripts": ["jquery.js", "background.js"],
-    "persistent": false
-  },
-  "permissions": [
-    "activeTab",
-    "tabs",
-    "https://*.4chan.org/*"
-  ]
+	"browser_action": {
+		"default_icon": "icons/icon.png",
+		"default_popup" : "popup.html",
+		"default_title" : "create imgur album with thread images"
+	},
+	"content_scripts": [
+	{
+		"matches": ["https://*.4chan.org/*"],
+		"js": ["js/scrape.js"]
+	}
+	],
+	"background": {
+		"scripts": ["libs/jquery.js", "js/background.js"],
+		"persistent": false
+	},
+	"permissions": [
+		"activeTab",
+		"tabs",
+		"https://*.4chan.org/*"
+	]
 }

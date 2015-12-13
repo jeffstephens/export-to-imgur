@@ -1,0 +1,105 @@
+// colors
+@lightGray: #eee;
+@medGray: #888;
+@darkGray: #444;
+@shadowGray: #555;
+@green: #dff0d8;
+@blue: #d9edf7;
+@yellow: #fcf8e3;
+@red: #f2dede;
+
+// sizes
+@popupWidth: 350px;
+@progressBarHeight: 8px;
+
+// fonts
+@sansSerif: 'Open Sans', sans-serif;
+@monospace: 'Inconsolata', monospace;
+@weightNormal: 400;
+@weightLight: 300;
+@weightSemibold: 600;
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,600|Inconsolata);
+
+html, body {
+	width: @popupWidth;
+	height: auto;
+	margin: 0;
+}
+
+body {
+	font-family: @sansSerif;
+	font-size: 100%;
+
+	h2 {
+		text-transform: uppercase;
+		font-size: 0.9em;
+		font-weight: @weightLight;
+		color: @medGray;
+		margin: 0 10px 5px;
+	}
+}
+
+.in-progress-container {
+	margin: 10px 0;
+}
+
+.fixed-width {
+	font-family: @monospace;
+	padding: 0 5px;
+}
+
+.message {
+	width: 100%;
+	text-align: left;
+	padding: 10px 10px;
+	background-color: @lightGray;
+	background-repeat: no-repeat;
+	background-position: -6px center;
+	background-size: 54px;
+	box-sizing: border-box;
+
+	p {
+		margin: 0;
+		margin-left: 40px;
+		font-size: 0.85em;
+		cursor: default;
+		color: @darkGray;
+		line-height: 1.3em;
+	}
+}
+
+.message-success {
+	background-image: url('icons/check.png');
+}
+
+.message-info {
+	background-image: url('icons/i.png');
+}
+
+.message-warning {
+	background-image: url('icons/alert.png');
+}
+
+.message-error {
+	background-image: url('icons/x.png');
+}
+
+.progress-bar-container {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.progress-bar {
+	height: @progressBarHeight;
+}
+
+.progress-bar-background {
+	background-color: @lightGray;
+}
+
+.progress-bar-foreground {
+	position: relative;
+	top: (-1 * @progressBarHeight);
+	background-color: @darkGray;
+}

@@ -1,9 +1,7 @@
-// scrape a given 4chan.org tab
-
-// Listen for messages
+// scrape a given 4chan.org tab when requested by the background page
 chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
     // If the received message has the expected format...
-    if (msg.text === 'report_back') {
+    if (msg.type === 'scrape_request') {
         if (typeof document == "undefined") {
             alert("Uh oh. Couldn't read the webpage. Refresh and try again.");
             return;

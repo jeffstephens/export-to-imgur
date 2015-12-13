@@ -5,24 +5,20 @@
  value "popup.html".
  -->
 <html>
-  <head>
-    <title>4chan image archiver</title>
-    <style>
-      body {
-        font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
-        font-size: 100%;
-      }
-      #status {
-        /* avoid an excessively wide status text */
-        white-space: pre;
-        text-overflow: ellipsis;
-        overflow: hidden;
-        max-width: 400px;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="status"></div>
-  </body>
+	<head>
+		<title>4chan image archiver</title>
+	</head>
+	<script type="text/javascript" src="libs/jquery.js"></script>
+	<script type="text/javascript" src="libs/handlebars.runtime-v4.0.5.js"></script>
+	<script type="text/javascript" src="js/templates.js"></script>
+	<script type="text/javascript" src="js/UserMessage.js"></script>
+	<script type="text/javascript" src="js/MessageManager.js"></script>
+	<script type="text/javascript" src="js/ProgressManager.js"></script>
+	<script type="text/javascript" src="js/popup.js"></script>
+	<link type="text/css" href="popup.css" rel="stylesheet">
+	<body>
+		<div id="messagesContainer"></div>
+		<div id="jobsContainer"></div>
+		<div id="historyContainer"></div>
+	</body>
 </html>
-
