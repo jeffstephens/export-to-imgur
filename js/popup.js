@@ -1,4 +1,4 @@
-var background = chrome.extension.getBackgroundPage();
+var ACTIVE_TAB = null;
 var messageManager = new MessageManager();
 var progressManager = new ProgressManager();
 // TODO var historyManager = new HistoryManager();
@@ -6,19 +6,19 @@ var progressManager = new ProgressManager();
 var updateProgressInterval = null;
 
 // check if an album export is in progress. if so, monitor it.
-function checkInProgress() {
-	if (progressManager.isInProgress()) {
-		updateProgressInterval = setInterval(updateProgress, 200);
+function checkInProgress(background) {
+	if (progressManager.isInProgress(background)) {
+		updateProgressInterval = setInterval(function() { chrome.runtime.getBackgroundPage(updateProgress); }, 200);
 	} else {
 		clearInterval(updateProgressInterval);
 	}
 }
 
 // check current progress and update the UI
-function updateProgress() {
+function updateProgress(background) {
 	var progressHTML = Handlebars.templates.inProgress({
-		"conversionInProgress" : progressManager.isInProgress(),
-		"percentComplete" : progressManager.getPercentComplete()
+		"conversionInProgress" : progressManager.isInProgress(background),
+		"percentComplete" : progressManager.getPercentComplete(background)
 	});
 	$("#jobsContainer").html(progressHTML);
 }
@@ -46,10 +46,14 @@ function refreshUI() {
 }
 
 function attemptCreateAlbum(tab) {
-	console.log(tab);
-	var attempt = background.createAlbum(tab);
+	ACTIVE_TAB = tab;
+	chrome.runtime.getBackgroundPage(callCreateAlbum);
+}
 
-	if ("success" in attempt) {
+function callCreateAlbum(background) {
+	var attempt = background.createAlbum(ACTIVE_TAB);
+
+	if (typeof attempt !== "undefined" && "success" in attempt) {
 		if (attempt.success) {
 			messageManager.addMessage("success", "Album export started.", "A new tab will automatically open when it's ready.");
 		}
@@ -66,16 +70,11 @@ function attemptCreateAlbum(tab) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-	if (background === null) {
-		messageManager.addMessage("error", "Bummer.", "Something is messed up. Try enabling/disabling the extension...");
-		refreshUI();
-	} else {
-		getCurrentTabUrl(attemptCreateAlbum);
+	getCurrentTabUrl(attemptCreateAlbum);
 
-		// refresh UI (new messages, etc.)
-		setInterval(refreshUI, 500);
-		setInterval(checkInProgress, 1000);
-	}
+	// refresh UI (new messages, etc.)
+	setInterval(refreshUI, 500);
+	setInterval(function() { chrome.runtime.getBackgroundPage(checkInProgress) }, 1000);
 });
 
 chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
