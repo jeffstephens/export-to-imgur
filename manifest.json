@@ -23,6 +23,7 @@
 	"permissions": [
 		"activeTab",
 		"tabs",
-		"https://*.4chan.org/*"
+		"https://*.4chan.org/*",
+		"background"
 	]
 }

@@ -4,13 +4,6 @@ var progressManager = new ProgressManager();
 // TODO var historyManager = new HistoryManager();
 
 var updateProgressInterval = null;
-// refresh UI (new messages, etc.)
-setInterval(refreshUI, 500);
-setInterval(checkInProgress, 1000);
-
-if (typeof background === "undefined") {
-	messageManager.addMessage("error", "Bummer.", "Something is messed up. Try enabling/disabling the extension...");
-}
 
 // check if an album export is in progress. if so, monitor it.
 function checkInProgress() {
@@ -73,7 +66,16 @@ function attemptCreateAlbum(tab) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-	getCurrentTabUrl(attemptCreateAlbum);
+	if (background === null) {
+		messageManager.addMessage("error", "Bummer.", "Something is messed up. Try enabling/disabling the extension...");
+		refreshUI();
+	} else {
+		getCurrentTabUrl(attemptCreateAlbum);
+
+		// refresh UI (new messages, etc.)
+		setInterval(refreshUI, 500);
+		setInterval(checkInProgress, 1000);
+	}
 });
 
 chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
