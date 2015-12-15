@@ -20,6 +20,6 @@ The templates are compiled into a single file, `js/templates.js`, which is inclu
 
 ### Building the Extension
 
-Instructions to load an unpacked Chrome extension are available on [Google's documentation website](https://developer.chrome.com/extensions/egetstarted#unpacked). Follow those instructions. That's it.
+Instructions to load an unpacked Chrome extension are available on [Google's documentation website](https://developer.chrome.com/extensions/getstarted#unpacked). Follow those instructions. That's it.
 
 Eventually I'll publish a version to the Chrome web store.
