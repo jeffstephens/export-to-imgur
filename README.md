@@ -8,6 +8,8 @@ I plan to support more sites eventually. **Pull requests are very welcome.**
 
 ### Dependencies
 
+#### Templating with Handlebars.js
+
 This project uses `handlebars.js` for templating. However, Chrome requires templates to be precompiled because on-the-fly compilation requires the use of `eval()` which is insecure in the highly privileged Chrome extension environment.
 
 To precompile the templates, you need to install Handlebars locally. [Instructions are here](http://handlebarsjs.com/precompilation.html). I also found [this blog post](http://www.adamwadeharris.com/how-to-precompile-handlebars-templates/) to be very helpful.
@@ -17,6 +19,12 @@ Once it's installed, just run the following command from the repository's root d
     handlebars -m templates-src/> js/templates.js
 
 The templates are compiled into a single file, `js/templates.js`, which is included in the extension.
+
+#### Stylesheets in LESS
+
+This project uses `LESS` for stylesheets to describe styles more expressively and efficiently than traditional `CSS`. However, it requires an extra step to compile to `CSS` so that it can be interpreted by browsers.
+
+Instructions are available on [the LESS website](http://lesscss.org/#using-less). My preference is to use [LiveReload](http://livereload.com/) to compile the `LESS` to `CSS` on every file change.
 
 ### Building the Extension
 
