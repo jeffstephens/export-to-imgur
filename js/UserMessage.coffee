@@ -14,7 +14,7 @@ class UserMessage
 		newLevel = newLevel.trim().toLowerCase()
 		allowedLevels = ["error", "warning", "info", "success"]
 
-		if allowedLevels.indexOf newLevel > -1
+		if newLevel in allowedLevels
 			@level = newLevel
 		else
 			throw new Error "#{newLevel} is not a valid message level."
@@ -27,7 +27,7 @@ class UserMessage
 		if newTitle.length > 0
 			@title = newTitle
 		else
-			throw new Error "Tried to update message text to a blank string."
+			throw new Error "Tried to update message title to a blank string."
 
 	setText: (newText) =>
 		if not newText?
