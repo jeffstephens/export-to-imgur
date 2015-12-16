@@ -3,9 +3,10 @@
   var JobItem;
 
   JobItem = (function() {
-    function JobItem(urlList) {
-      if ((urlList != null) && urlList.length > 0) {
+    function JobItem(urlList, albumName) {
+      if ((urlList != null) && urlList.length > 0 && (albumName != null)) {
         this.urlList = urlList;
+        this.albumName = albumName;
         this.time = Date.now();
       } else {
         throw new Error("A JobItem requires a urlList.");
@@ -13,7 +14,7 @@
     }
 
     JobItem.prototype.isIdenticalTo = function(otherItem) {
-      return (this.urlList.length === otherItem.urlList.length) && this.urlList.every(function(element, index) {
+      return (this.urlList.length === otherItem.urlList.length) && (this.albumName === otherItem.albumName) && this.urlList.every(function(element, index) {
         return element === otherItem.urlList[index];
       });
     };

@@ -7,9 +7,9 @@ describe 'JobManager', ->
 
 	beforeEach ->
 		jm = new JobManager()
-		jiOne = new JobItem ["http://www.example.com/"]
-		jiTwo = new JobItem ["http://www.google.com/"]
-		jiThree = new JobItem ["http://www.yahoo.com/"]
+		jiOne = new JobItem ["http://www.example.com/"], "first"
+		jiTwo = new JobItem ["http://www.google.com/"], "second"
+		jiThree = new JobItem ["http://www.yahoo.com/"], "third"
 
 	it 'should initially have an empty queue', ->
 		expect( jm.jobQueue ).to.be.empty

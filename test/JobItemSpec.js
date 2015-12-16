@@ -9,7 +9,7 @@
   describe('JobItem', function() {
     it('should initially have a valid timestamp', function() {
       var ji;
-      ji = new JobItem(["http://www.example.com/"]);
+      ji = new JobItem(["http://www.example.com/"], "Example Item");
       expect(ji.time).to.not.be["null"];
       return expect(ji.time).to.be.above(0);
     });
@@ -24,16 +24,20 @@
     it('should be able to tell when it is functionally identical (same urlList) to another JobItem', function() {
       var firstItem, secondItem, urlList;
       urlList = ["http://www.example.com/", "http://www.google.com/"];
-      firstItem = new JobItem(urlList);
-      secondItem = new JobItem(urlList);
+      firstItem = new JobItem(urlList, "item");
+      secondItem = new JobItem(urlList, "item");
       secondItem.time = 100;
       expect(firstItem.isIdenticalTo(secondItem)).to.be["true"];
       return expect(secondItem.isIdenticalTo(firstItem)).to.be["true"];
     });
     return it('should be able to tell when it is not functionally identical (same urlList) to another JobItem', function() {
-      var firstItem, secondItem;
-      firstItem = new JobItem(["http://www.example.com/"]);
-      secondItem = new JobItem(["http://www.google.com/"]);
+      var firstItem, fourthItem, secondItem, thirdItem;
+      firstItem = new JobItem(["http://www.example.com/"], "item");
+      secondItem = new JobItem(["http://www.google.com/"], "item");
+      expect(firstItem.isIdenticalTo(secondItem)).to.be["false"];
+      expect(secondItem.isIdenticalTo(firstItem)).to.be["false"];
+      thirdItem = new JobItem(["http://www.example.com"], "item1");
+      fourthItem = new JobItem(["http://www.example.com"], "item2");
       expect(firstItem.isIdenticalTo(secondItem)).to.be["false"];
       return expect(secondItem.isIdenticalTo(firstItem)).to.be["false"];
     });

@@ -13,9 +13,9 @@
     jm = jiOne = jiTwo = jiThree = null;
     beforeEach(function() {
       jm = new JobManager();
-      jiOne = new JobItem(["http://www.example.com/"]);
-      jiTwo = new JobItem(["http://www.google.com/"]);
-      return jiThree = new JobItem(["http://www.yahoo.com/"]);
+      jiOne = new JobItem(["http://www.example.com/"], "first");
+      jiTwo = new JobItem(["http://www.google.com/"], "second");
+      return jiThree = new JobItem(["http://www.yahoo.com/"], "third");
     });
     it('should initially have an empty queue', function() {
       return expect(jm.jobQueue).to.be.empty;
