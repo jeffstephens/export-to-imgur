@@ -26,6 +26,22 @@ This project uses `LESS` for stylesheets to describe styles more expressively an
 
 Instructions are available on [the LESS website](http://lesscss.org/#using-less). My preference is to use [LiveReload](http://livereload.com/) to compile the `LESS` to `CSS` on every file change.
 
+#### CoffeeScript
+
+This project uses [CoffeeScript](http://coffeescript.org/) because it's way easier to write and read than plain Javascript. Compilation instructions are listed on their website, but I prefer to use [LiveReload](http://livereload.com/) to compile the CoffeeScript to Javascript on every file change.
+
+#### Unit Tests with Mocha and Chai
+
+This project uses the [Mocha testing framework](https://mochajs.org/) with the [Chai assertion library](http://chaijs.com/).
+
+They will be automatically installed if you run the following command in the project root directory:
+
+    npm install
+
+To run the test suite, just run
+
+    mocha
+
 ### Building the Extension
 
 Instructions to load an unpacked Chrome extension are available on [Google's documentation website](https://developer.chrome.com/extensions/getstarted#unpacked). Follow those instructions. That's it.

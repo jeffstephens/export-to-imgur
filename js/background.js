@@ -127,8 +127,8 @@ imgur.openAlbumIfExists = function(albumID) {
 }
 
 function updateQuotaLimits(request) {
-		var userRemaining = Math.floor(parseInt(request.getResponseHeader("X-RateLimit-UserRemaining"), 10));
-		var appRemaining = Math.floor(parseInt(request.getResponseHeader("X-RateLimit-ClientRemaining"), 10) / 10);
+	var userRemaining = Math.floor(parseInt(request.getResponseHeader("X-RateLimit-UserRemaining"), 10));
+	var appRemaining = Math.floor(parseInt(request.getResponseHeader("X-RateLimit-ClientRemaining"), 10) / 10);
 
 	REMAINING_UPLOADS = Math.min(userRemaining, appRemaining);
 	console.log("REMAINING_UPLOADS = " + REMAINING_UPLOADS);
