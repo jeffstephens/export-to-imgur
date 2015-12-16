@@ -10,11 +10,17 @@
     }
 
     ProgressManager.prototype.isInProgress = function(background) {
+      if (background == null) {
+        throw new Error("A background page object is required.");
+      }
       return background.TOTAL_IMAGE_COUNT > 0;
     };
 
     ProgressManager.prototype.getPercentComplete = function(background) {
       var fractionComplete;
+      if (background == null) {
+        throw new Error("A background page object is required.");
+      }
       fractionComplete = background.UPLOADED_IMAGE_LIST.length / background.TOTAL_IMAGE_COUNT;
       return Math.round(100 * fractionComplete);
     };
